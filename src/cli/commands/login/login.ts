@@ -162,12 +162,10 @@ async function tryGetAzTenantAndSubscription(options: SWACLIConfig) {
     const azureProfile = await safeReadJson(AZURE_LOGIN_CONFIG);
     if (azureProfile) {
       const allSubscriptions = (azureProfile as AzureProfile).subscriptions;
-      if (allSubscriptions) {
-        const defaultAzureInfo = allSubscriptions.find((subscription) => subscription.isDefault == true);
-        if (defaultAzureInfo) {
-          options.tenantId = defaultAzureInfo.tenantId;
-          options.subscriptionId = defaultAzureInfo.id;
-        }
+      const defaultAzureInfo = allSubscriptions.find((subscription) => subscription.isDefault == true);
+      if (defaultAzureInfo) {
+        options.tenantId = defaultAzureInfo.tenantId;
+        options.subscriptionId = defaultAzureInfo.id;
       }
     }
 
