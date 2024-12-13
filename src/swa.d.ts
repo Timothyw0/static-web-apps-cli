@@ -290,32 +290,21 @@ declare type SWAConfigFileMimeTypes = {
   [key: string]: string;
 };
 
-declare type AuthIdentityTokenEndpoints = {
-  [key: string]: {
-    host: string;
-    path: string;
-  };
-};
-
-declare type AuthIdentityIssHosts = {
-  [key: string]: string;
-};
-
 declare type AuthIdentityProvider = {
   registration: {
     clientIdSettingName: string;
     clientSecretSettingName: string;
-    openIdIssuer?: string;
   };
 };
 
 declare type SWAConfigFileAuthIdenityProviders = {
-  [key: string]: AuthIdentityProvider;
+  github?: AuthIdentityProvider;
+  google?: AuthIdentityProvider;
 };
 
 declare type SWAConfigFileAuth = {
   rolesSource?: string;
-  identityProviders?: SWAConfigFileAuthIdenityProviders;
+  identityProviders: SWAConfigFileAuthIdenityProviders;
 };
 
 declare type SWAConfigFile = {
